@@ -14,7 +14,8 @@ angular.module('myYoProjectApp')
             'AngularJS',
             'Karma'
         ];
-        $scope.list1 = JSON.parse(localStorage.getItem('activities')) || [];
+        $scope.list1 = Activity.activity()
+        console.log(Activity.activity ())
         var shus = JSON.parse(localStorage.getItem('shus')) || [];
         var even = _.find(shus, function (act) {
             return act.color == "true"
