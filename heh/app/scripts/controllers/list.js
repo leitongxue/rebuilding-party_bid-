@@ -27,27 +27,22 @@ angular.module('myYoProjectApp')
         }
 
 
-        $scope.next = "创建活动";
+
         $scope.go_next = function () {
             $location.path('main_one');
         }
 
         $scope.tiao = function (activity) {
-            localStorage.baoMing_name = activity.activity;
+            Activity.click_activity(activity.activity)
             $location.path('/creat')
         }
 
 
         function xuan() {
-            var choose = JSON.parse(localStorage.getItem('activities')) || [];
-            if (choose.length == 0) {
+            if (Activity.activity_length()) {
                 $location.path('/main_one');
             }
-            else {
-
-            }
         }
-
         xuan()
 
 
