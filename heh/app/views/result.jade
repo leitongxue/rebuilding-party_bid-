@@ -1,0 +1,38 @@
+header
+      {{title}}（{{number}}人）
+
+
+      .header-left
+         a.btn.btn-default.btn-lg(href="#/jingjia") 返 回
+
+
+div#wrapper(class="wrapper scrollable")
+    ul(class="list-style-2")
+        li(ng-repeat="messages in middle track by $index")
+            h3 {{messages.name}}：{{messages.phone}}
+            h3.header-right￥{{messages.price}}
+
+footer
+
+    ul(class="list-style-2" style="margin-bottom: 50px;")竞价结果：{{winner_name}}    {{winner_price}}    {{winner_phone}}
+
+
+.modal.fade#ModalSuccess(style="display: block;width: 600px;height: 60px;")
+   .modal-dialog(style="margin-bottom: 0px;margin-left: 0px;margin-top: 0px;margin-right: 0px;")
+        .modal-content
+          .a(class="close" data-dismiss="modal" ) &times
+            .h4.modal-title
+          .modal-body
+          .center
+                {{winner_name}}   {{winner_price}}    {{winner_phone}}
+
+footer
+    ul.footer-nav.footer-nav-2tabs
+        li.active
+                a(href='#/result')
+                     竞价结果
+        li
+                a(href='#/fenxi')
+                     价格统计
+
+

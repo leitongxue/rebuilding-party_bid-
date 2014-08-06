@@ -1,0 +1,22 @@
+header
+      竞价活动
+      .header-left
+         button.btn.btn-default.btn-lg(ng-click="back()") 返 回
+
+      .header-right
+         button.btn.btn-default.btn-lg(ng-click="move()")(ng-disabled="dian") 开 始
+
+div#wrapper.wrapper.scrollable
+       ul.list-style-2
+           li(class="{{shus.color}}")(ng-repeat="shus in list2")
+                a(ng-click="next(shus)")
+                    h3{{shus.shus}}
+
+
+ footer
+    ul.footer-nav.footer-nav-2tabs
+        li
+                a(href='#/creat')(class="list-style-2") 报名
+
+        li.active
+                a(href='#/jingjia')(class="list-style-2") 竞价

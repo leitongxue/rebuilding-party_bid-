@@ -1,0 +1,23 @@
+<header>
+
+    创建活动
+    <div class="header-left"></div>
+    <div class="header-left">
+        <button class="btn btn-default btn-lg"  ng-click="go_back()" ng-show="see">返回</button>
+    </div>
+
+</header>
+
+    <div class="margin-top-50">
+
+        <input ng-model="change" class="input-full" id="prependedInput" type="text" placeholder="活动名称" ng-change="inputstatus()">
+
+    </div>
+    <div style="color:#ff0000" ng-show="show1" class="logo-flat">*活动名重复*</div>
+
+    <div>
+        <button class="btn btn-primary btn-lg btn-block"  ng-click="go_register()" ng-disabled="!change">创建
+        </button>
+    </div>
+
+

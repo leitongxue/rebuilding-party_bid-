@@ -1,0 +1,42 @@
+
+
+<header>
+
+    报 名（{{number}}人）
+
+    <div class="header-right" ng-switch on="log">
+        <button class="btn-4 btn-primary" ng-switch-when="true"  ng-click="hh()" ng-disabled="start_change"> 开 始 </button>
+        <button class="btn-4 btn-primary" ng-switch-when="false" ng-click="HH()"> 结 束 </button>
+    </div>
+
+    <div class="header-left">
+
+        <button class="btn btn-default btn-lg"  ng-click="go_backing()">返回</button>
+    </div>
+
+
+</header>
+
+
+<div id="wrapper" class="wrapper scrollable">
+    <ul class="list-style-2">
+        <li ng-repeat="messages in middle track by $index">
+             <h3>{{messages.name}}</h3>
+
+             <h3 class="header-right">
+                 {{messages.phone}}
+             </h3>
+        </li>
+    </ul>
+</div>
+
+<footer>
+    <ul class="footer-nav footer-nav-2tabs">
+        <li class="active"><a href="#/creat">报名</a></li>
+        <li>
+            <a href="#/jingjia">竞价</a>
+        </li>
+    </ul>
+</footer>
+
+
