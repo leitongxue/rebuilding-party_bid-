@@ -21,7 +21,7 @@ var native_accessor = {
         var activity = JSON.parse(localStorage.getItem('activities')) || []
         //竞价时，name就是价格
         var shus = JSON.parse(localStorage.getItem('shus'))
-        var oo = localStorage.getItem('baoMing_name')
+        var oo = localStorage.getItem('seeing_activity_name')
 
         //报名收发短信
         if (duanxin.search(/bm/i) == 0) {
@@ -59,18 +59,20 @@ var native_accessor = {
 
         //竞价收发短信
         if (duanxin.search(/jj/i) == 0) {
+
             var message = {"name": "name", "phone": "phone", "price": "price"}
             message.price = duanxin.substr(2).trim()
             message.phone = json_message.messages[0].phone
             if (shus[0].color == "true") //判断竞价是否开始
             {
                 if (shus[0].messages.length == 0) {
+
                     for (var a = 0; a < activity.length; a++)//遍历报名数组
-                    {
+                    {console.log(1)
                         if (activity[a].activity == oo)//找到当前报名活动
                         {
                             var action = _.find(activity, function (act) {
-                                return act.activity == localStorage.baoMing_name
+                                return act.activity == localStorage.seeing_activity_name
                             }).messages
                             var even = _.find(action, function (act) {
                                 return act.phone == message.phone
@@ -103,7 +105,7 @@ var native_accessor = {
                         return;
                     }
                     else {
-                        var oo = localStorage.getItem('baoMing_name')
+                        var oo = localStorage.getItem('seeing_activity_name')
                         console.log(oo)
                         var GG = _.find(activity, function (act) {
                             return act.activity == oo
@@ -111,7 +113,7 @@ var native_accessor = {
                         if (GG)//找到当前活动
                         {
                             var action = _.find(activity, function (act) {
-                                return act.activity == localStorage.baoMing_name
+                                return act.activity == localStorage.seeing_activity_name
                             }).messages
 //                                    console.log(action)
 
