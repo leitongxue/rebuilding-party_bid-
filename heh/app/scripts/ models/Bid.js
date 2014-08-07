@@ -6,10 +6,10 @@ function Bids() {
     this.color = false;
     this.push = "start"
 }
-Bids.save = function () {
-
+Bids.use_bids=function(){
+    var bids = JSON.parse(localStorage.getItem('bids')) || [];
+    return bids
 }
-
 Bids.get_bids = function () {
     var BiD = new Bids()
     var bids = JSON.parse(localStorage.getItem('bids')) || [];
@@ -17,13 +17,7 @@ Bids.get_bids = function () {
     localStorage.setItem("bids", JSON.stringify(bids));
     return bids
 }
-Bids.start_disabled = function () {
-    var activities = Activity.activity()
-    var even = _.find(activities, function (act) {
-        return act.tureth == "ture"
-    })
-    return even
-}
+
 Bids.save_bid_name = function (bid_name) {
     var bid = Bids.get_bids()
     var shu = _.filter(bid, function (shu) {
@@ -41,16 +35,19 @@ Bids.get_messages = function () {
     })
     return message
 }
-Bids.action_disabled = function () {
+Bids.start_disabled_activity = function () {
     var activities = Activity.activity()
-    var bids = JSON.parse(localStorage.getItem('bids')) || []
-    var v1 = _.find(activities, function (act) {
+    var even = _.find(activities, function (act) {
         return act.tureth == "true"
     })
+    return even
+}
+Bids.start_disabled_bid = function () {
+    var bids = JSON.parse(localStorage.getItem('bids')) || []
     var v2 = _.find(bids, function (act) {
         return act.color == "true"
     })
-    return v1 || v2
+    return  v2
 }
 Bids.get_seeing_bid_name=function(bid){
     localStorage.seeing_bid_name =bid
@@ -59,4 +56,15 @@ Bids.get_seeing_bid_name=function(bid){
         return act.bid == localStorage.seeing_bid_name});console.log(bids)
     var colors=action.color
     return colors=="false"
+}
+Bids.messages_bid=function(){
+    var bids = JSON.parse(localStorage.getItem('bids')) || [];
+    var activity= _.filter(bids,function(act){return act.name==localStorage.seeing_activity_name})
+    var bidding= _.find(activity,function(act){return act.bid==localStorage.seeing_bid_name})
+    return bidding
+}
+Bids.change_color=function(){
+    var bids = JSON.parse(localStorage.getItem('bids')) || []
+    bids[0].color="false"
+    localStorage.setItem("bids", JSON.stringify(bids));
 }

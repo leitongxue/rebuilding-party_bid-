@@ -36,7 +36,7 @@ Activity.save_bid_status_ture = function () {
     var doing_activity = _.find(activities, function (act) {
         return act.activity == localStorage.seeing_activity_name
     })
-    doing_activity.bid_status = "ture"
+    doing_activity.bid_status = "true"
     localStorage.setItem("activities", JSON.stringify(activities));
 }
 Activity.save_bid_status_false = function () {

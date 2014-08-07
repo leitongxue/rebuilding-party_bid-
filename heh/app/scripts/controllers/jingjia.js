@@ -16,8 +16,8 @@ angular.module('myYoProjectApp')
         ];
 
         $scope.move = function (shus) {
-
-            if (Bids.start_disabled()) {
+            if (Bids.start_disabled_activity()) {
+                $scope.dian = true
             }
             else {
                 if (Activity.change_doing_activity()) {
@@ -29,10 +29,10 @@ angular.module('myYoProjectApp')
         }
 
         function dian() {
-            if (Bids.action_disabled()) {
+            if (Bids.start_disabled_activity() || Bids.start_disabled_bid()) {
                 $scope.dian = true;
             }
-            if (!Bids.action_disabled()) {
+            if (!(Bids.start_disabled_activity() || Bids.start_disabled_bid())) {
                 $scope.dian = false;
             }
         }

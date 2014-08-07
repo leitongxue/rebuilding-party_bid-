@@ -16,7 +16,7 @@ angular.module('myYoProjectApp')
         ];
         $scope.show1 = false;
 
-        $scope.inputstatus = function () {
+        $scope.input_status = function () {
             if (Activity.same_name($scope.change)) {
                 $scope.show1 = true;
             }
@@ -24,7 +24,7 @@ angular.module('myYoProjectApp')
                 $scope.show1 = false;
             }
         }
-        $scope.inputstatus()
+        $scope.input_status()
         $scope.go_back = function () {
             $location.path('/list')
         }

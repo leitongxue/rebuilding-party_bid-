@@ -14,18 +14,16 @@ angular.module('myYoProjectApp')
             'AngularJS',
             'Karma'
         ];
-        $scope.list1 = Activity.activity()
-        console.log(Activity.activity ())
-        var shus = JSON.parse(localStorage.getItem('shus')) || [];
-        var even = _.find(shus, function (act) {
-            return act.color == "true"
-        })
-        if (even) {
-            $scope.dnf = true
-        }
-        else {
-            $scope.dnf = false;
-        }
+        $scope.list1 = JSON.parse(localStorage.getItem('activities'))
+        var a =JSON.parse(localStorage.getItem('activities'))
+console.log(a[0].bid_status)
+
+//        if (Bids.start_disabled_activity()) {
+//            $scope.dnf = true
+//        }
+//        if (!Bids.start_disabled_activity()){
+//            $scope.dnf = false;
+//        }
 
 
 
@@ -38,14 +36,11 @@ angular.module('myYoProjectApp')
             $location.path('/creat')
         }
 
-
         function xuan() {
             if (Activity.activity_length()) {
                 $location.path('/main_one');
             }
         }
         xuan()
-
-
     }
 );
