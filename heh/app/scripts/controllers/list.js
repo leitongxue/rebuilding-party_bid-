@@ -15,16 +15,6 @@ angular.module('myYoProjectApp')
             'Karma'
         ];
         $scope.list1 = JSON.parse(localStorage.getItem('activities'))
-        var a =JSON.parse(localStorage.getItem('activities'))
-console.log(a[0].bid_status)
-
-//        if (Bids.start_disabled_activity()) {
-//            $scope.dnf = true
-//        }
-//        if (!Bids.start_disabled_activity()){
-//            $scope.dnf = false;
-//        }
-
 
 
         $scope.go_next = function () {

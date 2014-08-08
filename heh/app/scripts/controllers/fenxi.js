@@ -18,45 +18,33 @@ angular.module('myYoProjectApp')
             $location.path('/jingjia')
         }
 
-
-        var shus = JSON.parse(localStorage.getItem('shus')) || [];
-        var list2 = _.filter(shus, function (shu) {
-            return shu.name == localStorage.baoMing_name
-        })
+        Bids.get_messages()
 
         $scope.xianshi = function () {
 
-            var even = _.find(list2, function (act) {
-                return act.shus == localStorage.jingjia_name
-            })
+            Bids.messages_bid()
+            if (Bids.messages_bid()) {
+                $scope.title = Bids.messages_bid().bid
+                $scope.number = Bids.messages_bid().messages.length
 
-            if (even) {
-                $scope.title = even.shus
-                $scope.number = even.messages.length
-                var newshu = JSON.parse(localStorage.getItem("price_p"))
-                $scope.middle = newshu
+                $scope.middle = Bids.price_number()
 
-
-                if (even.messages.length == 0) {
+                if (Bids.messages_bid().messages.length == 0) {
                     $scope.winner_name = "0人"
                 }
-                else {
-                    var list_price = JSON.parse(localStorage.getItem("price_p"))
-                    var win = _.find(list_price, function (act) {
-                        return act.count == 1
-                    })
-                    if (win) {
-                        var winner = JSON.parse(localStorage.getItem("winner"))
-                        $scope.winner_name = winner.name
-                        $scope.winner_phone = winner.phone + "  竞价成功！"
-                        $scope.winner_price = "￥" + winner.price
+                if (Bids.messages_bid().messages.length != 0) {
+                    if (Find_price_of_one_people()) {
+                        Bids.find_winner()
+                        $scope.winner_name = Bids.find_winner().name
+                        $scope.winner_phone = Bids.find_winner().phone + "  竞价成功！"
+                        $scope.winner_price = "￥" + Bids.find_winner().price
+                        Jump_window()
                     }
-                    else {
+                    if(!Find_price_of_one_people()){
                         $scope.winner_name = "竞价失败！"
                         $scope.winner_phone = ""
                         $scope.winner_price = ""
                     }
-
                 }
 
             }

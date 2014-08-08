@@ -53,7 +53,7 @@ Bids.get_seeing_bid_name=function(bid){
     localStorage.seeing_bid_name =bid
     var bids = JSON.parse(localStorage.getItem('bids')) || []
     var action = _.find(bids, function (act) {
-        return act.bid == localStorage.seeing_bid_name});console.log(bids)
+        return act.bid == localStorage.seeing_bid_name});
     var colors=action.color
     return colors=="false"
 }
@@ -67,4 +67,33 @@ Bids.change_color=function(){
     var bids = JSON.parse(localStorage.getItem('bids')) || []
     bids[0].color="false"
     localStorage.setItem("bids", JSON.stringify(bids));
+}
+Bids.price_number=function(){
+    var bidCount = _.countBy(Bids.messages_bid().messages, function (bid) {
+        return bid.price
+    });
+    var even = _.map(bidCount, function (value, key) {
+        return {'price': key, 'count': value}
+    });
+    localStorage.setItem("price_p", JSON.stringify(even))
+
+}
+Bids.bid_list=function(){
+    var bidList = _.sortBy(Bids.messages_bid().messages, function (bid) {
+        return bid.price
+    })
+    return bidList
+}
+Bids.find_winner=function() {
+    Find_price_of_one_people()//先找到最低符合要求的价格
+    if (Find_price_of_one_people()) {
+        var winner_action = _.find(Bids.get_messages(), function (act) {
+            return act.bid == localStorage.getItem('seeing_activity_name')
+        }).messages //找到所在竞价活动的messages数组
+        var winner = _.find(winner_action, function (act) {
+            return act.price == min.price
+        }) //找出最低价格
+        console.log(winner)
+        localStorage.setItem("winner", JSON.stringify(winner))
+    }
 }

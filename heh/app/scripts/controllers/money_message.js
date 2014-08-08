@@ -27,9 +27,7 @@ angular.module('myYoProjectApp')
         }
         $scope.diaoyong()
 
-
         //结束按钮
-
         Bids.use_bids()
         $scope.end = function () {
             Bids.use_bids()
