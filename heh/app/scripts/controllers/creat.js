@@ -47,7 +47,7 @@ angular.module('myYoProjectApp')
         $scope.HH = function firm() {
             if (confirm("你确定要退出报名吗？")) {
                 $scope.log = "true"
-                var tureth = {"log": "log"}
+//                var tureth = {"log": "log"}
                 if (Activity.change_doing_activity()) {
                     Activity.save_messages_end()
                 }

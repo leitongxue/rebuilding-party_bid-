@@ -6,7 +6,7 @@ function Bids() {
     this.color = false;
     this.push = "start"
 }
-Bids.use_bids=function(){
+Bids.use_bids = function () {
     var bids = JSON.parse(localStorage.getItem('bids')) || [];
     return bids
 }
@@ -30,45 +30,47 @@ Bids.save_bid_name = function (bid_name) {
 }
 Bids.get_messages = function () {
     var bids = JSON.parse(localStorage.getItem('bids')) || [];
-    var message = _.filter(bids, function (act) {
+    return ( _.filter(bids, function (act) {
         return act.name == localStorage.seeing_activity_name
-    })
-    return message
+    }))
 }
 Bids.start_disabled_activity = function () {
     var activities = Activity.activity()
-    var even = _.find(activities, function (act) {
+    return  (_.find(activities, function (act) {
         return act.tureth == "true"
-    })
-    return even
+    }))
 }
 Bids.start_disabled_bid = function () {
     var bids = JSON.parse(localStorage.getItem('bids')) || []
-    var v2 = _.find(bids, function (act) {
+    return ( _.find(bids, function (act) {
         return act.color == "true"
-    })
-    return  v2
+    }))
 }
-Bids.get_seeing_bid_name=function(bid){
-    localStorage.seeing_bid_name =bid
+Bids.get_seeing_bid_name = function (bid) {
+    localStorage.seeing_bid_name = bid
     var bids = JSON.parse(localStorage.getItem('bids')) || []
     var action = _.find(bids, function (act) {
-        return act.bid == localStorage.seeing_bid_name});
-    var colors=action.color
-    return colors=="false"
+        return act.bid == localStorage.seeing_bid_name
+    });
+    var colors = action.color
+    return colors == "false"
 }
-Bids.messages_bid=function(){
+Bids.messages_bid = function () {
     var bids = JSON.parse(localStorage.getItem('bids')) || [];
-    var activity= _.filter(bids,function(act){return act.name==localStorage.seeing_activity_name})
-    var bidding= _.find(activity,function(act){return act.bid==localStorage.seeing_bid_name})
+    var activity = _.filter(bids, function (act) {
+        return act.name == localStorage.seeing_activity_name
+    })
+    var bidding = _.find(activity, function (act) {
+        return act.bid == localStorage.seeing_bid_name
+    })
     return bidding
 }
-Bids.change_color=function(){
+Bids.change_color = function () {
     var bids = JSON.parse(localStorage.getItem('bids')) || []
-    bids[0].color="false"
+    bids[0].color = "false"
     localStorage.setItem("bids", JSON.stringify(bids));
 }
-Bids.price_number=function(){
+Bids.price_number = function () {
     var bidCount = _.countBy(Bids.messages_bid().messages, function (bid) {
         return bid.price
     });
@@ -76,15 +78,14 @@ Bids.price_number=function(){
         return {'price': key, 'count': value}
     });
     localStorage.setItem("price_p", JSON.stringify(even))
-
 }
-Bids.bid_list=function(){
+Bids.bid_list = function () {
     var bidList = _.sortBy(Bids.messages_bid().messages, function (bid) {
         return bid.price
     })
     return bidList
 }
-Bids.find_winner=function() {
+Bids.find_winner = function () {
     Find_price_of_one_people()//先找到最低符合要求的价格
     if (Find_price_of_one_people()) {
         var winner_action = _.find(Bids.get_messages(), function (act) {

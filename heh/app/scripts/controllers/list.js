@@ -26,6 +26,7 @@ angular.module('myYoProjectApp')
             $location.path('/creat')
         }
 
+
         function xuan() {
             if (Activity.activity_length()) {
                 $location.path('/main_one');
