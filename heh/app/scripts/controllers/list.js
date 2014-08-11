@@ -14,7 +14,7 @@ angular.module('myYoProjectApp')
             'AngularJS',
             'Karma'
         ];
-        $scope.list1 = JSON.parse(localStorage.getItem('activities'))
+        $scope.list1 = Activity.activity ()
 
 
         $scope.go_next = function () {

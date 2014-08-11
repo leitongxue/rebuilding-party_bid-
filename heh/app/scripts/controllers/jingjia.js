@@ -15,40 +15,15 @@ angular.module('myYoProjectApp')
             'Karma'
         ];
 
-        $scope.move = function (shus) {
-            if (Bids.start_disabled_activity()) {
-                $scope.dian = true
-            }
-            else {
-                if (Activity.change_doing_activity()) {
-                    Activity.save_bid_status_ture();
-                }
-                Bids.save_bid_name()
-                $location.path('/Money_message')
-            }
+        $scope.move = function () {
+            jj_move($scope,$location)
         }
-
-        function dian() {
-            if (Bids.start_disabled_activity() || Bids.start_disabled_bid()) {
-                $scope.dian = true;
-            }
-            if (!(Bids.start_disabled_activity() || Bids.start_disabled_bid())) {
-                $scope.dian = false;
-            }
-        }
-
-        dian()
+        $scope.click = click_start_button()
 
         //取出点击的竞价名
         $scope.next = function (bid) {
-            if (Bids.get_seeing_bid_name(bid)) {
-                $location.path('/result')
-            }
-            if (!Bids.get_seeing_bid_name(bid)) {
-                $location.path('/Money_message')
-            }
+            find_jj_name(bid.bid, $location)
         }
-
 
         $scope.list2 = Bids.get_messages()
 

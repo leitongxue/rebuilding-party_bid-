@@ -19,11 +19,13 @@ angular.module('myYoProjectApp')
             $location.path('/jingjia')
         }
 
+
         $scope.xianshi = function () {
             if (Bids.messages_bid()) {
                 Bids.price_number()
                 //创建一个‘价格——人数’数组
                 //显示
+                console.log(Bids.bid_list())
                 $scope.middle = Bids.bid_list()
                 $scope.number = Bids.messages_bid().messages.length //显示参与竞价人数
                 $scope.title = Bids.messages_bid().bid //显示竞价活动名
@@ -39,7 +41,7 @@ angular.module('myYoProjectApp')
                         $scope.winner_price = "￥" + Bids.find_winner().price
 
                     //2秒弹框，只显示一次：赋一个值为“push”，默认为"start",在此情况下执行语句，并且修改“push”值为“end”，不再改回‘start’
-                    Jump_window()
+                    Jump_window($timeout)
                     }
                     if(!Find_price_of_one_people()){
                         $scope.winner_name = "竞价失败！"

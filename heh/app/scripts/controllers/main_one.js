@@ -17,23 +17,15 @@ angular.module('myYoProjectApp')
         $scope.show1 = false;
 
         $scope.input_status = function () {
-            if (Activity.same_name($scope.change)) {
-                $scope.show1 = true;
-            }
-            if (!Activity.same_name($scope.change)) {
-                $scope.show1 = false;
-            }
+            Creat.main_one_input($scope)
         }
-        $scope.input_status()
+
         $scope.go_back = function () {
             $location.path('/list')
         }
         $scope.go_register = function () {
             jump()
-            if ($scope.show1 == false) {
-                $location.path('/creat');
-                Activity.new_activity($scope.change)
-            }
+            Creat.main_one_creat_button($scope,$location)
         }
         //          数组
         function jump() {

@@ -9,10 +9,11 @@ Sms.refresh_pages = function (wrapper) {
     if (refresh_page) {
         var scope = angular.element(refresh_page).scope();
         scope.$apply(function () {
-            scope.diaoyong();
+            scope.refresh();
         })
     }
 }
+
 Sms.bm_succeed = function (json_message) {
     var note = json_message.messages[0].message.replace(/\s/g, "");
     if (note.search(/bm/i) == 0) {

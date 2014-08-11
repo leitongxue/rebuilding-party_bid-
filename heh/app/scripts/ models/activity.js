@@ -31,7 +31,7 @@ Activity.save_messages_end = function () {
     }).tureth = "false"
     localStorage.setItem("activities", JSON.stringify(activities));
 }
-Activity.save_bid_status_ture = function () {
+Activity.save_bid_status_true = function () {
     var activities = JSON.parse(localStorage.getItem('activities')) || []
     var doing_activity = _.find(activities, function (act) {
         return act.activity == localStorage.seeing_activity_name

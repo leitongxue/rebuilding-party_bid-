@@ -21,9 +21,10 @@ angular.module('myYoProjectApp')
         Bids.get_messages()
 
         $scope.xianshi = function () {
-
             Bids.messages_bid()
+            console.log(Bids.messages_bid())
             if (Bids.messages_bid()) {
+                console.log(1)
                 $scope.title = Bids.messages_bid().bid
                 $scope.number = Bids.messages_bid().messages.length
                 $scope.middle = Bids.price_number()

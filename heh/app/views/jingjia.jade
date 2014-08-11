@@ -4,12 +4,12 @@ header
          button.btn.btn-default.btn-lg(ng-click="back()") 返 回
 
       .header-right
-         button.btn.btn-default.btn-lg(ng-click="move()")(ng-disabled="dian") 开 始
+         button.btn.btn-default.btn-lg(ng-click="move()")(ng-disabled="click") 开 始
 
 div#wrapper.wrapper.scrollable
        ul.list-style-2
            li(class="{{bid.color}}")(ng-repeat="bid in list2")
-                a(ng-click="next(bid.bid)")
+                a(ng-click="next(bid)")
                     h3{{bid.bid}}
 
 
