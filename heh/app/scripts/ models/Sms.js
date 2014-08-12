@@ -35,6 +35,10 @@ Sms.same_bm = function (json_message) {
         return act.phone == json_message.messages[0].phone
     }))
 }
+Sms.find_doing_bm = function (json_message) {
+    var doing = Bids.start_disabled_activity()
+    return doing
+}
 Sms.find_this_bm = function () {
     var activities = Activity.activity()
     return  (_.find(activities, function (act) {
@@ -82,4 +86,12 @@ Sms.jj_succeed = function (json_message) {
         localStorage.setItem("bids", JSON.stringify(bids));
         return
     }
+}
+Sms.choose_message_head_bm= function (json_message) {
+    var note = json_message.messages[0].message.replace(/\s/g, "");
+   return note.search(/bm/i) == 0
+}
+Sms.choose_message_head_jj= function (json_message) {
+    var note = json_message.messages[0].message.replace(/\s/g, "");
+   return note.search(/jj/i) == 0
 }

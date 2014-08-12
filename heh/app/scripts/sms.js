@@ -14,43 +14,42 @@ var native_accessor = {
 
     process_received_message: function (json_message) {
 
-        if (Bids.start_disabled_activity(json_message) && !Sms.same_bm(json_message)) {
+        if (Sms.choose_message_head_bm(json_message) && Sms.find_doing_bm(json_message) && !Sms.same_bm(json_message)) {
             Sms.bm_succeed(json_message)
             native_accessor.send_sms(json_message.messages[0].phone, "恭喜您，报名成功！")
             Sms.refresh_pages();
             return;
         }
 
-        if (Bids.start_disabled_activity(json_message) && Sms.same_bm(json_message)) {
+        if (Sms.choose_message_head_bm(json_message) && Sms.find_doing_bm(json_message) && Sms.same_bm(json_message)) {
             native_accessor.send_sms(json_message.messages[0].phone, "报名已成功，请勿重复报名")
             Sms.refresh_pages();
             return;
         }
 
-        if (!Bids.start_disabled_activity(json_message) && !Sms.find_doing_jj(json_message)) {
-
+        if (Sms.choose_message_head_bm(json_message) && !Sms.find_doing_bm(json_message)) {
             native_accessor.send_sms(json_message.messages[0].phone, "报名未开始，请耐心等待")
             return;
         }
 
-        if (Sms.find_doing_jj(json_message) && Sms.find_this_bm(json_message) && Sms.bm_phone_same_jj(json_message)&& !Sms.same_jj_name(json_message)) {
+        if (Sms.choose_message_head_jj(json_message) && Sms.find_this_bm(json_message) && Sms.find_doing_jj(json_message) && Sms.bm_phone_same_jj(json_message) && !Sms.same_jj_name(json_message)) {
 
             Sms.jj_succeed(json_message)
-
             native_accessor.send_sms(json_message.messages[0].phone, "恭喜您，竞价成功！")
             Sms.refresh_pages();
             return;
         }
 
-        if (Sms.find_doing_jj(json_message) && Sms.find_this_bm(json_message) && Sms.same_jj_name(json_message)) {
+        if (Sms.choose_message_head_jj(json_message) && Sms.find_this_bm(json_message) && Sms.find_doing_jj(json_message) && Sms.same_jj_name(json_message)) {
             native_accessor.send_sms(json_message.messages[0].phone, "竞价已成功，请勿重复竞价")
             return;
         }
-        if (Sms.find_doing_jj(json_message) && !Sms.bm_phone_same_jj(json_message)) {
+        if (Sms.choose_message_head_jj(json_message) && Sms.find_this_bm(json_message) && Sms.find_doing_jj(json_message) && !Sms.bm_phone_same_jj(json_message)) {
+            console.log(1)
             native_accessor.send_sms(json_message.messages[0].phone, "未报名活动，不能参加竞价")
             return;
         }
-        if (Bids.start_disabled_activity(json_message) && !Sms.find_doing_jj(json_message)) {
+        if (Sms.choose_message_head_jj(json_message) && !Sms.find_doing_jj(json_message)) {
             native_accessor.send_sms(json_message.messages[0].phone, "竞价未开始，请耐心等待");
             return;
         }

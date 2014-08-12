@@ -8,7 +8,7 @@
  * Controller of the myYoProjectApp
  */
 angular.module('myYoProjectApp')
-    .controller('JingjiaCtrl', function ($scope, $location) {
+    .controller('BidsCtrl', function ($scope, $location) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',

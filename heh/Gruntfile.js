@@ -24,9 +24,9 @@ module.exports = function (grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
       jade: {
-          jingjia: {
-              src: 'app/views/jingjia.jade',
-              dest: 'app/views/jingjia.html'
+          bids: {
+              src: 'app/views/bids.jade',
+              dest: 'app/views/bids.html'
           },
           Money_message: {
               src: 'app/views/Money_message.jade',
@@ -36,9 +36,9 @@ module.exports = function (grunt) {
               src: 'app/views/result.jade',
               dest: 'app/views/result.html'
           },
-          fenxi: {
-              src: 'app/views/fenxi.jade',
-              dest: 'app/views/fenxi.html'
+          analyze: {
+              src: 'app/views/analyze.jade',
+              dest: 'app/views/analyze.html'
           }
       },
 

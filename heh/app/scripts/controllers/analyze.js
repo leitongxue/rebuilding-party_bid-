@@ -8,7 +8,7 @@
  * Controller of the myYoProjectApp
  */
 angular.module('myYoProjectApp')
-    .controller('ResultCtrl', function ($scope, $location, $timeout) {
+    .controller('AnalyzeCtrl', function ($scope, $location) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
@@ -17,5 +17,5 @@ angular.module('myYoProjectApp')
         $scope.back = function () {
             $location.path('/bids')
         }
-        jj_result($scope, $timeout)
+        jj_analyze($scope)
     })

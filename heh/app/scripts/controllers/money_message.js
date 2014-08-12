@@ -15,7 +15,7 @@ angular.module('myYoProjectApp')
             'Karma'
         ];
         $scope.back = function () {
-            $location.path('/jingjia')
+            $location.path('/bids')
         }
 
         $scope.refresh=function() {
@@ -23,9 +23,7 @@ angular.module('myYoProjectApp')
                 $scope.middle = Bids.messages_bid().messages
                 $scope.number = Bids.messages_bid().messages.length
                 $scope.title = Bids.messages_bid().bid
-
             }
-
         }
         $scope.refresh()
 

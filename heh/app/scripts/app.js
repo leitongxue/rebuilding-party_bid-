@@ -31,9 +31,9 @@ angular
         templateUrl: 'views/creat.html',
         controller: 'CreatCtrl'
       })
-      .when('/jingjia', {
-        templateUrl: 'views/jingjia.html',
-        controller: 'JingjiaCtrl'
+      .when('/bids', {
+        templateUrl: 'views/bids.html',
+        controller: 'BidsCtrl'
       })
       .when('/Money_message', {
         templateUrl: 'views/Money_message.html',
@@ -43,9 +43,9 @@ angular
         templateUrl: 'views/result.html',
         controller: 'ResultCtrl'
         })
-      .when('/fenxi', {
-        templateUrl: 'views/fenxi.html',
-        controller: 'FenxiCtrl'
+      .when('/analyze', {
+        templateUrl: 'views/analyze.html',
+        controller: 'AnalyzeCtrl'
         })
       .otherwise({
         redirectTo: '/'

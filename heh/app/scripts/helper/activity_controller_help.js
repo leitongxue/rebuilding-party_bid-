@@ -16,7 +16,7 @@ Creat.end_button=function($scope,$location){
         if (Activity.change_doing_activity($scope)) {
             Activity.save_messages_end($scope)
         }
-        $location.path('/jingjia')
+        $location.path('/bids')
     }
 }
 Creat.choose_button=function($scope){
